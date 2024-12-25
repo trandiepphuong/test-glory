@@ -1,0 +1,39 @@
+name: 'Build'
+
+on:
+  push:
+    branches: ['master']
+    paths:
+      - 'express/**'
+      - 'nest/**'
+      - '.github/workflows/*'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'express/**'
+      - 'nest/**'
+      - '.github/workflows/*'
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.15.1
+
+      - run: corepack enable
+
+      - name: Install deps
+        run: yarn run bootstrap
+
+      - name: Run test client
+        run: yarn run build:client
+
+      - name: Run test server
+        run: yarn run build:server
