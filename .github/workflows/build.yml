@@ -2,14 +2,14 @@ name: 'Build'
 
 on:
   push:
-    branches: ['master']
+    branches: ['main']
     paths:
       - 'express/**'
       - 'nest/**'
       - '.github/workflows/*'
   pull_request:
     branches:
-      - master
+      - main
     paths:
       - 'express/**'
       - 'nest/**'
