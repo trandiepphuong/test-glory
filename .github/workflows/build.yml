@@ -16,7 +16,7 @@ on:
       - '.github/workflows/*'
 
 jobs:
-  run-tests:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
